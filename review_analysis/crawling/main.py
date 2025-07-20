@@ -3,12 +3,14 @@ from typing import Dict, Type
 from review_analysis.crawling.base_crawler import BaseCrawler
 from review_analysis.crawling.rotten_tomatoes_crawler import RottenTomatoesCrawler
 from review_analysis.crawling.naver_crawler import NaverCrawler
+from review_analysis.crawling.letterboxd_crawler import LetterboxdCrawler
 
 
 # 모든 크롤링 클래스를 예시 형식으로 적어주세요.
 CRAWLER_CLASSES: Dict[str, Type[BaseCrawler]] = {
     "rottentomatoes": RottenTomatoesCrawler,
     "naver": NaverCrawler,
+    "letterboxd": LetterboxdCrawler
 }
 
 
