@@ -23,7 +23,7 @@ class LetterboxdCrawler(BaseCrawler):
 
     def start_browser(self):
         options = Options()
-        options.add_argument("--headless")  # 필요시 주석 처리
+        options.add_argument("--headless")
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
         options.add_argument(
