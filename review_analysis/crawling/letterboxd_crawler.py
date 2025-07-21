@@ -19,7 +19,7 @@ class LetterboxdCrawler(BaseCrawler):
     def __init__(self, output_dir: str):
         super().__init__(output_dir)
         self.reviews: list = []
-        self.max_reviews = 100
+        self.max_reviews = 1000
 
     def start_browser(self):
         options = Options()
