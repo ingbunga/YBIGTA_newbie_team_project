@@ -7,6 +7,9 @@ from nltk.stem import WordNetLemmatizer
 from scipy.stats import zscore
 from sklearn.feature_extraction.text import TfidfVectorizer
 from review_analysis.preprocessing.base_processor import BaseDataProcessor
+from collections import Counter
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 import nltk
 nltk.download('punkt_tab')
@@ -60,5 +63,45 @@ class LetterboxdProcessor(BaseDataProcessor):
     def save_to_database(self):
         base_name = os.path.splitext(os.path.basename(self.input_path))[0]
         dir_path = os.path.dirname(self.input_path) 
-        output_file = os.path.join(dir_path, f"preprocessed_reviews_{base_name}.csv")
+        output_file = os.path.join(dir_path, f"preprocessed_{base_name}.csv")
         self.df.to_csv(output_file, index=False)
+
+
+    def visualize(self):
+        plt.figure(figsize=(8, 6))
+        counts = self.df['rating'].iloc[:,0].value_counts().sort_index()
+
+        # 컬러 맵으로 색상 강도 조절
+        colors = sns.color_palette("Blues", n_colors=len(counts))
+        
+        plt.bar(counts.index, counts.values, color=colors)
+
+        plt.title("Rating Distribution (Letterboxd)", fontsize=14)
+        plt.xlabel("Rating (out of 10)")
+        plt.ylabel("Frequency")
+        plt.grid(axis='y', linestyle='--', alpha=0.5)
+        plt.tight_layout()
+        plt.savefig("review_analysis/plots/letterboxd_rating_histogram.png")
+        plt.show()
+
+        exclude_words = {"review", "movie", "film"}
+        tokenized = self.df['review'].iloc[:,0].apply(lambda x: word_tokenize(x))
+        tokenized = tokenized.apply(lambda review: [word for word in review if len(word) >= 3 and word.isalpha() if word not in exclude_words])
+
+        word_counts = Counter([word for review in tokenized for word in review])
+        common_words = word_counts.most_common(20)
+
+        words, freqs = zip(*common_words)
+        colors = sns.color_palette("Blues_r", n_colors=20)
+
+        plt.figure(figsize=(12, 6))
+        sns.barplot(x=list(words), y=list(freqs), palette=colors)
+
+        plt.title(f"Top {20} Most Frequent Words in Reviews (Letterboxd)", fontsize=14)
+        plt.xlabel("Words")
+        plt.ylabel("Frequency")
+        plt.xticks(rotation=45)
+        plt.grid(axis='y', linestyle='--', alpha=0.5)
+        plt.tight_layout()
+        plt.savefig("review_analysis/plots/letterboxd_top20_frequent_words.png")
+        plt.show()

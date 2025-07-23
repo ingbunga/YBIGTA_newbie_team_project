@@ -59,7 +59,7 @@ class NaverProcessor(BaseDataProcessor):
         if self.df is None:
             raise ValueError("DataFrame is not initialized. Call preprocess() first.")
         base_name = os.path.splitext(os.path.basename(self.input_path))[0]
-        output_file_path = os.path.join(self.output_dir, f"preprocessed_reviews_{base_name}.csv")
+        output_file_path = os.path.join(self.output_dir, f"preprocessed_{base_name}.csv")
         os.makedirs(self.output_dir, exist_ok=True)
         self.df.to_csv(output_file_path, index=False)
 
