@@ -58,8 +58,7 @@ class RottenTomatoesProcessor(BaseDataProcessor):
 
     def save_to_database(self):
         base_name = os.path.splitext(os.path.basename(self.input_path))[0]
-        output_file = os.path.join("database", f"preprocessed_reviews_{base_name}.csv")
-        os.makedirs("database", exist_ok=True)
+        output_file = os.path.join(self.output_dir, f"preprocessed_reviews_{base_name}.csv")
         self.df.to_csv(output_file, index=False)
 
     def visualize(self):
