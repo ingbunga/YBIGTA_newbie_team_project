@@ -61,7 +61,6 @@ if __name__ == "__main__":
         print("[INFO] --all 옵션 실행 시작")
         for csv_file in REVIEW_COLLECTIONS:
             print(f"[INFO] 발견한 파일: {csv_file}")
-            print(f"[INFO] 발견한 파일: {csv_file}")
 
             base_name = os.path.splitext(os.path.basename(csv_file))[0]
             print(f"[INFO] base_name = {base_name}")
