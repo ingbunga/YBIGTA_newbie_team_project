@@ -1,7 +1,7 @@
 import os
 from dataclasses import dataclass
 from typing import Optional
-import pandas as pd
+import csv
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -96,8 +96,11 @@ class NaverCrawler(BaseCrawler):
         if not self.reviews:
             logger.warning("저장할 리뷰가 없습니다.")
             return
-        df = pd.DataFrame(self.reviews)
         os.makedirs(self.output_dir, exist_ok=True)
         save_path = os.path.join(self.output_dir, "reviews_naver.csv")
-        df.to_csv(save_path, index=False)
+        with open(save_path, mode='w', newline='', encoding='utf-8') as file:
+            writer = csv.writer(file)
+            writer.writerow(["rating", "date", "review"])
+            for review in self.reviews:
+                writer.writerow([review.rating, review.date, review.review])
         logger.info(f"CSV 저장 완료: {save_path}")
