@@ -1,6 +1,7 @@
+import csv
 import os
 import time
-import pandas as pd
+from dataclasses import dataclass
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -12,10 +13,17 @@ from utils.logger import setup_logger
 logger = setup_logger()
 
 
+@dataclass
+class CrawledReview:
+    rating: float
+    date: str
+    review: str
+
+
 class RottenTomatoesCrawler(BaseCrawler):
     def __init__(self, output_dir: str):
         super().__init__(output_dir)
-        self.reviews = []
+        self.reviews: list[CrawledReview] = []
 
     def start_browser(self):
         options = webdriver.ChromeOptions()
@@ -89,14 +97,14 @@ class RottenTomatoesCrawler(BaseCrawler):
         for idx, card in enumerate(review_cards):
             try:
                 stars_tag = card.find_element(By.TAG_NAME, "rating-stars-group")
-                stars = float(stars_tag.get_attribute("score"))
+                stars = float(stars_tag.get_attribute("score") or 0)
                 date = card.find_element(
                     By.CLASS_NAME, "audience-reviews__duration"
                 ).text
                 review = card.find_element(
                     By.CLASS_NAME, "audience-reviews__review"
                 ).text
-                self.reviews.append({"rating": stars, "date": date, "review": review})
+                self.reviews.append(CrawledReview(rating=stars, date=date, review=review))
             except Exception as e:
                 logger.warning(f"[{idx}] 리뷰 파싱 실패: {e}")
                 continue
@@ -109,8 +117,11 @@ class RottenTomatoesCrawler(BaseCrawler):
         if not self.reviews:
             logger.warning("저장할 리뷰가 없습니다.")
             return
-        df = pd.DataFrame(self.reviews)
         os.makedirs(self.output_dir, exist_ok=True)
         save_path = os.path.join(self.output_dir, "reviews_rottentomatoes.csv")
-        df.to_csv(save_path, index=False)
+        with open(save_path, mode='w', newline='', encoding='utf-8') as file:
+            writer = csv.writer(file)
+            writer.writerow(["rating", "date", "review"])
+            for review in self.reviews:
+                writer.writerow([review.rating, review.date, review.review])
         logger.info(f"CSV 저장 완료: {save_path}")

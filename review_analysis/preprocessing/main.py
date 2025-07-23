@@ -3,10 +3,7 @@ import glob
 from argparse import ArgumentParser
 from typing import Dict, Type
 from review_analysis.preprocessing.base_processor import BaseDataProcessor
-from review_analysis.preprocessing.letterboxd_processor import LetterboxdProcessor
-from review_analysis.preprocessing.rottentomatoes_preprocessor import (
-    RottenTomatoesProcessor,
-)
+from review_analysis.preprocessing.rottentomatoes_processor import RottenTomatoesProcessor
 from review_analysis.preprocessing.naver_processor import NaverProcessor
 from review_analysis.preprocessing.letterboxd_processor import LetterboxdProcessor
 
