@@ -1,9 +1,7 @@
 import os
-import sys
 import glob
 from argparse import ArgumentParser
 from typing import Dict, Type
-sys.path.append('../..')
 from review_analysis.preprocessing.base_processor import BaseDataProcessor
 from review_analysis.preprocessing.rottentomatoes_preprocessor import (
     RottenTomatoesProcessor,
@@ -62,6 +60,7 @@ if __name__ == "__main__":
     if args.all:
         print("[INFO] --all 옵션 실행 시작")
         for csv_file in REVIEW_COLLECTIONS:
+            print(f"[INFO] 발견한 파일: {csv_file}")
             print(f"[INFO] 발견한 파일: {csv_file}")
 
             base_name = os.path.splitext(os.path.basename(csv_file))[0]
