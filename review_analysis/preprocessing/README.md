@@ -13,8 +13,8 @@
 | RottenTomatoes| **8.70**  |
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/be223f60-3aab-4ab4-8e36-8d92418a4ead" width="300"/>
   <img src="https://github.com/user-attachments/assets/ca770c49-e25d-466a-a2db-36ce51062447" width="300"/>
+  <img src="https://github.com/user-attachments/assets/be223f60-3aab-4ab4-8e36-8d92418a4ead" width="300"/>
   <img src="https://github.com/user-attachments/assets/ff517de3-da6d-40ad-ab0f-0cdaae532540" width="300"/>
 </div>
 
@@ -41,9 +41,9 @@ RottenTomatoes는 감정과 평가가 균형 있게 담긴 중간 길이의 리�
 ### 주요 단어 (Top 20 Frequency)
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/efd4a2d2-d1ce-4676-921b-2b7a92b10d01" width="300"/>
   <img src="https://github.com/user-attachments/assets/cf61ae72-f9cc-4296-b43b-f500ddf88a08" width="300"/>
   <img src="https://github.com/user-attachments/assets/f1e11e44-52ea-488b-a42b-64620e2f29a1" width="300"/>
+  <img src="https://github.com/user-attachments/assets/efd4a2d2-d1ce-4676-921b-2b7a92b10d01" width="300"/>
 </div>
 
 Letterboxd는 “best”, “like”, “ever” 등 강한 감정 표현이 반복적으로 등장했다.  
