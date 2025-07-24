@@ -1,6 +1,6 @@
 # <EDA>
 ## 평점 분포
-<img width="680" height="508" alt="image" src="https://github.com/user-attachments/assets/ee730127-b3a6-48d7-ae77-c297ad498e84" /><img width="684" height="507" alt="image" src="https://github.com/user-attachments/assets/ca770c49-e25d-466a-a2db-36ce51062447" />
+<img width="684" height="507" alt="image" src="https://github.com/user-attachments/assets/ca770c49-e25d-466a-a2db-36ce51062447" />
 <img width="727" height="514" alt="image" src="https://github.com/user-attachments/assets/be223f60-3aab-4ab4-8e36-8d92418a4ead" />
 <img width="680" height="508" alt="image" src="https://github.com/user-attachments/assets/ff517de3-da6d-40ad-ab0f-0cdaae532540" />
 
