@@ -52,8 +52,11 @@ class RottenTomatoesProcessor(BaseDataProcessor):
         tfidf_df = pd.DataFrame(
             tfidf_matrix.toarray(), columns=vectorizer.get_feature_names_out()
         )
-        self.df = pd.concat(
-            [self.df.reset_index(drop=True), tfidf_df.reset_index(drop=True)], axis=1
+        # TF-IDF 결과로 관련도 높은 키워드 추출
+        self.df["keywords"] = tfidf_df.apply(
+            lambda row: " ".join(
+                row[row > 0].sort_values(ascending=False).head(5).index.tolist()
+            ), axis=1
         )
 
     def save_to_database(self):
