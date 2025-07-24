@@ -58,12 +58,16 @@ class LetterboxdProcessor(BaseDataProcessor):
         vectorizer = TfidfVectorizer(max_features=10000)
         tfidf_matrix = vectorizer.fit_transform(self.df['review'])
         tfidf_df = pd.DataFrame(tfidf_matrix.toarray(), columns=vectorizer.get_feature_names_out())
-        self.df = pd.concat([self.df.reset_index(drop=True), tfidf_df.reset_index(drop=True)], axis=1)
+        # TF-IDF 결과로 관련도 높은 키워드 추출
+        self.df["keywords"] = tfidf_df.apply(
+            lambda row: " ".join(
+                row[row > 0].sort_values(ascending=False).head(5).index.tolist()
+            ), axis=1
+        )
 
     def save_to_database(self):
         base_name = os.path.splitext(os.path.basename(self.input_path))[0]
-        dir_path = os.path.dirname(self.input_path) 
-        output_file = os.path.join(dir_path, f"preprocessed_{base_name}.csv")
+        output_file = os.path.join(self.output_dir, f"preprocessed_{base_name}.csv")
         self.df.to_csv(output_file, index=False)
 
 
