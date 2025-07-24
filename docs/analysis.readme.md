@@ -72,7 +72,10 @@ RottenTomatoes는 “good”, “great”, “really”, “character” 등 다
 ---
 
 ## 비교 분석: 플랫폼 간 차이점
+플랫폼별 별점 분포 시각화:
+![image](/review_analysis/plots/rating_distribution.png)
 
+주요 차이:
 | 항목             | Letterboxd       | Naver              | RottenTomatoes               |
 |------------------|------------------|--------------------|------------------------------|
 | 평균 평점        | **9.47**         | 8.17               | 8.70                         |
