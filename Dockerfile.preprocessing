@@ -1,9 +1,9 @@
 FROM python:3
 
-WORKDIR ./
+WORKDIR /app
 
 # 시스템 패키지 설치
-ENV JAVA_HOME /usr/lib/jvm/java-1.7-openjdk/jre
+ENV JAVA_HOME=/usr/lib/jvm/java-1.7-openjdk/jre
 RUN apt-get update && apt-get install -y g++ default-jdk
 
 # requirements.txt 복사 및 패키지 설치
@@ -14,7 +14,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # 작업 디렉토리 설정
-WORKDIR ./
+WORKDIR /app
 
 # 전처리 스크립트 실행
 CMD ["python", "-m", "review_analysis.preprocessing.main", "-o", "/output", "-a"]
