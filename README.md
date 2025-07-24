@@ -27,14 +27,9 @@ SICP 라는 책에서는 프로그래머를 마법사로 비유합니다. 컴퓨
 
 ## 🔒 GitHub 협업 흐름
 
-<div align="center">
-  <img src="https://github.com/user-attachments/assets/41311b8f-ca60-429a-9350-989fe2d7e4bc" width="300"/>
-</div>
+![branch_protection](/github/branch_protection.png)
 
-<div align="center">
-  <img src="https://github.com/user-attachments/assets/108012be-fce9-445c-b9c5-30bdea2ac571" width="300"/>
-</div>
+![push_rejected](/github/push_rejected.png)
 
-<div align="center">
-  <img src="https://github.com/user-attachments/assets/99b555a8-ad7f-43c3-a81d-779bba89d516" width="300"/>
-</div>
+![review_and_merged](/github/review_and_merged.png)
+
