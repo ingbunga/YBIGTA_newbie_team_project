@@ -38,18 +38,3 @@
 |review| 리뷰 텍스트 |
 #### 크롤링 리뷰 갯수
 1020개
-
-## 크롤러 실행 방법
-루트 디렉토리에서 다음과 같은 명령을 입력해주세요.
-```sh
-pip install -r requirements.txt
-pip install selenium
-pip install pandas
-python -m review_analysis.crawling.main -o ./database -a
-```
-<!--
-    pip install selenium
-    pip install pandas
-
-    는 requirements.txt에 포함될 시 삭제될 수 있음.
--->

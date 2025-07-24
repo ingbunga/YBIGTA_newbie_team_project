@@ -14,6 +14,14 @@ SICP 라는 책에서는 프로그래머를 마법사로 비유합니다. 컴퓨
 ### 👨‍🎓 한원석
 저는 산업공학과 21학번 한원석입니다. 유능한 저희 조 다른 팀원들을 따라가기 위해 열심히 노력하고 있습니다.
 
+# 크롤링 데이터 설명
+[크롤링 데이터 readme 파일](docs/crawling.readme.md)
+
+# EDA&FE, 시각화
+[EDA & FE, 시각화 readme 파일](docs/analysis.readme.md)
+
+# 코드 실행 방법
+[코드 실행 방법 readme 파일](docs/git.readme.md)
 
 ---
 
