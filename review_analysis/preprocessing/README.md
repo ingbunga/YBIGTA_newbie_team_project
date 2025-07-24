@@ -19,7 +19,7 @@
 </div>
 
 Letterboxd는 가장 높은 평점을 보이며, 전반적으로 긍정적인 리뷰가 많았다.  
-Naver는 비교적 평점이 고르게 분포되어 있으며, 짧은 평가가 중심이다.  
+Naver는 비교적 평점이 고르게 분포되어 있었다.
 RottenTomatoes는 감정 표현이 적극적으로 반영되어 높은 점수가 자주 등장했다.
 
 ---
@@ -32,7 +32,7 @@ RottenTomatoes는 감정 표현이 적극적으로 반영되어 높은 점수가
 | Naver          | **27.11자**            |
 | RottenTomatoes | **171.41자**           |
 
-Letterboxd는 감상 중심의 긴 서술형 리뷰가 많아 정보 밀도가 매우 높다.  
+Letterboxd는 감상 중심의 긴 서술형 리뷰가 많았다.  
 Naver는 짧은 단문 리뷰가 대부분으로, 핵심적인 감정만 표현하는 경향이 있다.  
 RottenTomatoes는 감정과 평가가 균형 있게 담긴 중간 길이의 리뷰가 많다.
 
@@ -79,6 +79,6 @@ RottenTomatoes는 “good”, “great”, “really”, “character” 등 다
 | 리뷰 길이        | **442.14자**      | 27.11자            | 171.41자                     |
 | 감정 표현 단어   | best, like, ever | 재밌다, 좋다, 불편하다 | best, good, great, really, like |
 
-Letterboxd는 감정 표현이 강하고 리뷰가 서술 중심으로 매우 길다.  
-Naver는 감정을 짧고 직관적으로 표현하는 단문 리뷰가 많다.  
-RottenTomatoes는 감정 표현과 내용 중심 키워드가 균형 있게 나타나며, 빈도수 범위를 확장하면 `cinematography`, `brilliant`, `plot` 등의 키워드도 등장한다.
+Letterboxd는 감정 표현이 강하고 리뷰가 서술 중심으로 상대적으로 길었다.  
+Naver는 감정을 짧고 직관적으로 표현하는 단문 리뷰가 많았다.  
+RottenTomatoes는 감정 표현과 내용 중심 키워드가 균형 있게 나타나며, 빈도수 범위를 확장하면 `cinematography`, `brilliant`, `plot` 등의 키워드도 등장하였다.
