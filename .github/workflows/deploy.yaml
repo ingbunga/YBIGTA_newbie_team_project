@@ -45,14 +45,14 @@ jobs:
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
           # Docker Hub에서 이미지 pull
-          docker pull ${{ secrets.DOCKER_USERNAME }}/ybigta-app:latest
+          sudo docker pull ${{ secrets.DOCKER_USERNAME }}/ybigta-app:latest
           
           # 기존 컨테이너 중지 및 삭제
-          docker stop ybigta-app || true
-          docker rm ybigta-app || true
+          sudo docker stop ybigta-app || true
+          sudo docker rm ybigta-app || true
           
           # 새 컨테이너 실행
-          docker run -d \
+          sudo docker run -d \
             --name ybigta-app \
             --restart unless-stopped \
             -p 8000:8000 \
@@ -64,4 +64,4 @@ jobs:
             ${{ secrets.DOCKER_USERNAME }}/ybigta-app:latest
           
           # 컨테이너 상태 확인
-          docker ps
+          sudo docker ps
