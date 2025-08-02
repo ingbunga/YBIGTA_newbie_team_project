@@ -209,3 +209,34 @@ __marimo__/
 
 # Mac os
 .DS_Store
+
+# Security and sensitive files
+secrets/
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+*.cert
+*.pkey
+*.priv
+*.pub
+*.id_rsa
+*.id_ecdsa
+*.id_ed25519
+*.ppk
+config/local.py
+config/production.py
+config/staging.py
+config/development.py
+config/secrets.py
+config/database.py
+config/credentials.py
+*.env.local
+*.env.production
+*.env.staging
+*.env.development
+.env.*.local
+.env.*.production
+.env.*.staging
+.env.*.development

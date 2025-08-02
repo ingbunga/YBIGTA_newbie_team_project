@@ -16,6 +16,15 @@ pip install -r requirements.txt
 uvicorn app.main:app --reload
 ```
 
+또한 다음과 같은 명령어로 도커로 실행할 수도 있습니다.
+```bash
+# 이미지 빌드
+docker build -f Dockerfile -t newbie-project .
+
+# 컨테이너 실행
+docker run -p 8000:8000 --env-file .env newbie-project
+```
+
 인터넷 주소창에 다음과 같은 주소를 입력해주세요.
 ```html
 http://localhost:8000/static/index.html
