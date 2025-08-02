@@ -9,4 +9,3 @@ mongo_url = os.getenv("MONGO_URL")
 mongo_client = MongoClient(mongo_url)
 
 mongo_db = mongo_client.get_database('newbie_project')
-
