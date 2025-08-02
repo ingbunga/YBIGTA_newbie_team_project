@@ -22,7 +22,7 @@ uvicorn app.main:app --reload
 docker build -f Dockerfile -t newbie-project .
 
 # 컨테이너 실행
-docker run -p 8000:8000 newbie-project
+docker run -p 8000:8000 --env-file .env newbie-project
 ```
 
 인터넷 주소창에 다음과 같은 주소를 입력해주세요.
