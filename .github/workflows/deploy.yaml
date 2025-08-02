@@ -27,7 +27,7 @@ jobs:
       with:
         context: .
         push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/ybita-app:latest
+        tags: ${{ secrets.DOCKER_USERNAME }}/ybigta-app:latest
         cache-from: type=gha
         cache-to: type=gha,mode=max
 
@@ -45,23 +45,23 @@ jobs:
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
           # Docker Hub에서 이미지 pull
-          docker pull ${{ secrets.DOCKER_USERNAME }}/ybita-app:latest
+          docker pull ${{ secrets.DOCKER_USERNAME }}/ybigta-app:latest
           
           # 기존 컨테이너 중지 및 삭제
-          docker stop ybita-app || true
-          docker rm ybita-app || true
+          docker stop ybigta-app || true
+          docker rm ybigta-app || true
           
           # 새 컨테이너 실행
           docker run -d \
-            --name ybita-app \
+            --name ybigta-app \
             --restart unless-stopped \
             -p 8000:8000 \
-            -e DB_USER=${{ secrets.DB_USER }} \
-            -e DB_PASSWORD=${{ secrets.DB_PASSWORD }} \
-            -e DB_HOST=${{ secrets.DB_HOST }} \
-            -e DB_PORT=${{ secrets.DB_PORT }} \
-            -e DB_NAME=${{ secrets.DB_NAME }} \
-            ${{ secrets.DOCKER_USERNAME }}/ybita-app:latest
+            -e MYSQL_USER=${{ secrets.MYSQL_USER }} \
+            -e MYSQL_PASSWORD=${{ secrets.MYSQL_PASSWORD }} \
+            -e MYSQL_HOST=${{ secrets.MYSQL_HOST }} \
+            -e MYSQL_PORT=${{ secrets.MYSQL_PORT }} \
+            -e MYSQL_NAME=${{ secrets.MYSQL_NAME }} \
+            ${{ secrets.DOCKER_USERNAME }}/ybigta-app:latest
           
           # 컨테이너 상태 확인
           docker ps
