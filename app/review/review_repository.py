@@ -16,5 +16,8 @@ class ReviewRepository:
     
     def save_reviews(self, site_name: SiteName, reviews: list[Review]) -> None:
         collection_name = 'preprocessed_reviews_' + site_name.value
+        if collection_name not in mongo_db.list_collection_names():
+            mongo_db.create_collection(collection_name)
+        mongo_db[collection_name].delete_many({})
         preprocessed_reviews = mongo_db[collection_name]
         preprocessed_reviews.insert_many([review.model_dump() for review in reviews])

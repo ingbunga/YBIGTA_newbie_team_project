@@ -47,6 +47,7 @@ class ReviewService:
         parser.feature_engineering()
         parser.save_to_database()
         preprocessed_reviews = ReviewService.get_preprocessed_reviews_from_csv(site_name)
+        self.repo.save_reviews(site_name, preprocessed_reviews)
         if not preprocessed_reviews:
             raise ValueError("Preprocessed reviews not found.")
         return preprocessed_reviews
