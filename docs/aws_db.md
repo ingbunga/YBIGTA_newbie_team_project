@@ -1,8 +1,10 @@
-<img width="1150" height="237" alt="image" src="https://github.com/user-attachments/assets/3161cd6a-6ca7-42cd-8d48-626dce23f5d0" /># AWS RDS 
+<img width="1424" height="700" alt="Screenshot 2025-08-06 at 11 18 01 PM" src="https://github.com/user-attachments/assets/323fa294-c12d-4306-b7bb-89467a111dfd" />
+
 
 비공개 설정 & 로드밸런서 구성
 
 [클라이언트] → 80포트 → [AWS ALB] → 8000포트 → [EC2 FastAPI]
+
 
 ## 1. RDS 비공개 설정 (퍼블릭 액세스 차단)
 
@@ -16,6 +18,7 @@
 - 오직 EC2를 거쳐서만 RDS 접근 가능
 
 ### 설정 캡처
+
 <img width="974" height="514" alt="Screenshot 2025-08-06 at 10 27 32 PM" src="https://github.com/user-attachments/assets/06b4ce95-279e-4a8e-8f35-bf57850a88ac" />
 
 ---
@@ -36,6 +39,8 @@ app = FastAPI()
 @app.get("/health")
 def health():
     return {"status": "ok"}
+```
+
 <img width="1174" height="191" alt="image" src="https://github.com/user-attachments/assets/3791e1d7-ddf0-4296-b9a4-d9b590653afb" />
 -> 경로 /health로 설정하여 로드밸런서가 서버가 살아 있는지 주기적으로 확인할 때
 http://<서버주소>/health 경로로 요청을 보내도록 설정
