@@ -18,7 +18,8 @@
 
 ### 설정
 
-<img width="974" height="514" alt="Screenshot 2025-08-06 at 10 27 32 PM" src="https://github.com/user-attachments/assets/06b4ce95-279e-4a8e-8f35-bf57850a88ac" />
+<img width="800" alt="Screenshot 2025-08-06 at 10 27 32 PM" src="https://github.com/user-attachments/assets/06b4ce95-279e-4a8e-8f35-bf57850a88ac" />
+
 
 ---
 
@@ -43,16 +44,16 @@ def health():
 
 
 ### 경로 /health로 설정하여 로드밸런서가 서버가 살아 있는지 주기적으로 확인할 때 http://<서버주소>/health 경로로 요청을 보내도록 설정
-<img width="1174" height="191" alt="image" src="https://github.com/user-attachments/assets/3791e1d7-ddf0-4296-b9a4-d9b590653afb" />
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/3791e1d7-ddf0-4296-b9a4-d9b590653afb" />
 
 
 ### 리스너 설정
-<img width="1147" height="269" alt="image" src="https://github.com/user-attachments/assets/d208ac42-ff4f-4e5a-9b57-db6191f79eab" />
-
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/d208ac42-ff4f-4e5a-9b57-db6191f79eab" />
 ### 대상 설정
-<img width="1150" height="237" alt="image" src="https://github.com/user-attachments/assets/5c4794ef-64f9-4652-9a74-5cfbb6efeacc" />
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/5c4794ef-64f9-4652-9a74-5cfbb6efeacc" />
 
 ### 로드밸런서 통해 문서 접속
-<img width="1424" height="700" alt="image" src="https://github.com/user-attachments/assets/076e1b19-e152-4d51-9ac6-72b6f28985ca" />
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/076e1b19-e152-4d51-9ac6-72b6f28985ca" /> 
+
 
 
