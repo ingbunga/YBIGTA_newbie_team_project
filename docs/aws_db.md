@@ -1,4 +1,6 @@
-<img width="1150" height="237" alt="image" src="https://github.com/user-attachments/assets/3161cd6a-6ca7-42cd-8d48-626dce23f5d0" /># AWS RDS 비공개 설정 & 로드밸런서 구성
+<img width="1150" height="237" alt="image" src="https://github.com/user-attachments/assets/3161cd6a-6ca7-42cd-8d48-626dce23f5d0" /># AWS RDS 
+
+비공개 설정 & 로드밸런서 구성
 
 [클라이언트] → 80포트 → [AWS ALB] → 8000포트 → [EC2 FastAPI]
 
@@ -40,7 +42,9 @@ http://<서버주소>/health 경로로 요청을 보내도록 설정
 
 
 <img width="1147" height="269" alt="image" src="https://github.com/user-attachments/assets/d208ac42-ff4f-4e5a-9b57-db6191f79eab" />
+
 <img width="1150" height="237" alt="image" src="https://github.com/user-attachments/assets/5c4794ef-64f9-4652-9a74-5cfbb6efeacc" />
+
 <img width="1424" height="700" alt="image" src="https://github.com/user-attachments/assets/076e1b19-e152-4d51-9ac6-72b6f28985ca" />
 
 
