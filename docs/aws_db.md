@@ -40,8 +40,10 @@ def health():
     return {"status": "ok"}
 ```
 
+
+
+### 경로 /health로 설정하여 로드밸런서가 서버가 살아 있는지 주기적으로 확인할 때 http://<서버주소>/health 경로로 요청을 보내도록 설정
 <img width="1174" height="191" alt="image" src="https://github.com/user-attachments/assets/3791e1d7-ddf0-4296-b9a4-d9b590653afb" />
-### -> 경로 /health로 설정하여 로드밸런서가 서버가 살아 있는지 주기적으로 확인할 때 http://<서버주소>/health 경로로 요청을 보내도록 설정
 
 
 ### 리스너 설정
