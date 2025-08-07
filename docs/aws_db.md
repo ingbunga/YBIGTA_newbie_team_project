@@ -58,4 +58,35 @@ def health():
 ![load balancer web page](/aws/loadbalancer-web.png)
 
 
+# SWAGGER 캡쳐
+
+## 1. Health Check API
+**URL:** `GET /health`
+![health check](/aws/health.png)
+
+## 2. User Login API
+**URL:** `POST /api/user/login`
+![login](/aws/login.png)
+
+## 3. User Registration API
+**URL:** `POST /api/user/register`
+![register](/aws/register.png)
+
+## 4. User Delete API
+**URL:** `DELETE /api/user/delete`
+![delete](/aws/delete.png)
+
+## 5. User Update Password API
+**URL:** `PUT /api/user/update-password`
+![update password](/aws/update-password.png)
+
+## 6. Review Preprocess API
+**URL:** `POST /review/preprocess/{site_name}`
+![preprocess](/aws/preprocess.png)
+
+## 7. Get Preprocessed Reviews API
+**URL:** `GET /review/preprocessed/{id}`
+![preprocessed](/aws/preprocessed.png)
+
+
 
