@@ -1,4 +1,6 @@
 
+# docker hub repo
+[https://hub.docker.com/r/sungu122/ybigta-app](https://hub.docker.com/r/sungu122/ybigta-app)
 
 # 비공개 설정 & 로드밸런서 구성
 
