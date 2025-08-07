@@ -23,8 +23,8 @@ SICP 라는 책에서는 프로그래머를 마법사로 비유합니다. 컴퓨
 # 코드 실행 방법
 [코드 실행 방법 readme 파일](docs/git.readme.md)
 
-# AWS, DB, github 과제
-[AWS, DB, github 과제](docs/aws_db_github.md)
+# AWS, DOCKER, DB 과제
+[AWS, DOCKER, DB 과제](docs/aws_docker_db.md)
 
 # 프로젝트를 진행하며 깨달은 점, 마주쳤던 오류를 해결한 경험
 [깨달은 점, 오류를 해결한 경험](docs/lessons_learned.md)
