@@ -58,6 +58,10 @@ def health():
 ![load balancer web page](/aws/loadbalancer-web.png)
 
 
+# Github Action 캡쳐
+![github action](/aws/github_action.png)
+
+
 # SWAGGER 캡쳐
 
 ## 1. Health Check API
