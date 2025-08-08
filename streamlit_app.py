@@ -25,7 +25,7 @@ def main() -> None:
 
     graph = get_or_create_graph()
 
-    user_input = st.chat_input("메시지를 입력하세요… 예: 리뷰 내용 알려줘, 아이폰 스펙 알려줘")
+    user_input = st.chat_input("메시지를 입력하세요… 예: 리뷰 내용 알려줘, 영화 정보 알려줘")
     if user_input:
         st.session_state["messages"].append({"role": "user", "content": user_input})
         for event in graph.stream({"input": user_input}, stream_mode="values"):
