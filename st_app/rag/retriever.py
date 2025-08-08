@@ -72,15 +72,29 @@ def retrieve(query: str, k: int = 3) -> List[Tuple[str, dict]]:
     ipath, mpath = _index_path(), _meta_path()
     index = faiss.read_index(str(ipath))
     meta = json.loads(mpath.read_text(encoding="utf-8"))
-    texts = [d["text"] for d in meta["documents"]]
+    
+    # Handle different meta.json formats
+    if isinstance(meta, dict) and "documents" in meta:
+        documents = meta["documents"]
+        texts = [d["text"] for d in documents]
+    else:
+        # meta is a list directly
+        documents = meta
+        texts = [d["review"] for d in documents]  # Use "review" field from the actual structure
+    
     qvec = encode_texts([query])[0]
     D, I = index.search(np.array([qvec], dtype="float32"), k)
     results: List[Tuple[str, dict]] = []
     for idx in I[0]:
         if idx == -1:
             continue
-        doc = meta["documents"][int(idx)]
-        results.append((doc["text"], doc.get("metadata", {})))
+        doc = documents[int(idx)]
+        if isinstance(meta, dict) and "documents" in meta:
+            results.append((doc["text"], doc.get("metadata", {})))
+        else:
+            # Convert to expected format
+            metadata = {k: v for k, v in doc.items() if k != "review"}
+            results.append((doc["review"], metadata))
     return results
 
 

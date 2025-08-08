@@ -1,27 +1,16 @@
 [
   {
-    "id": "iphone15",
-    "name": "iPhone 15",
-    "type": "product",
+    "id": "parasite",
+    "name": "기생충",
+    "type": "movie",
     "spec": {
-      "display": "6.1-inch",
-      "chip": "A16",
-      "camera": "48MP",
-      "battery": "~3349 mAh"
+      "director": "봉준호",
+      "year": "2019",
+      "genre": "드라마/스릴러",
+      "runtime": "132분",
+      "rating": "15세 이상"
     },
-    "summary": "애플의 스마트폰. 카메라 및 칩 성능이 개선됨"
-  },
-  {
-    "id": "galaxyS24",
-    "name": "Galaxy S24",
-    "type": "product",
-    "spec": {
-      "display": "6.2-inch",
-      "chip": "Exynos 2400",
-      "camera": "50MP",
-      "battery": "4000 mAh"
-    },
-    "summary": "삼성전자의 스마트폰. AI 기능이 강화됨"
+    "summary": "계급 갈등을 다룬 봉준호 감독의 작품. 아카데미상 작품상 수상작"
   }
 ]
 
