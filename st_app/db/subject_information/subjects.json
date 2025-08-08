@@ -1,0 +1,28 @@
+[
+  {
+    "id": "iphone15",
+    "name": "iPhone 15",
+    "type": "product",
+    "spec": {
+      "display": "6.1-inch",
+      "chip": "A16",
+      "camera": "48MP",
+      "battery": "~3349 mAh"
+    },
+    "summary": "애플의 스마트폰. 카메라 및 칩 성능이 개선됨"
+  },
+  {
+    "id": "galaxyS24",
+    "name": "Galaxy S24",
+    "type": "product",
+    "spec": {
+      "display": "6.2-inch",
+      "chip": "Exynos 2400",
+      "camera": "50MP",
+      "battery": "4000 mAh"
+    },
+    "summary": "삼성전자의 스마트폰. AI 기능이 강화됨"
+  }
+]
+
+

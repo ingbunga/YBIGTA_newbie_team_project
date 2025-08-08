@@ -62,3 +62,14 @@ urllib3==2.5.0
 uvicorn==0.34.0
 websocket-client==1.8.0
 wsproto==1.2.0
+
+## --- Added for RAG/Agent Streamlit demo ---
+streamlit==1.39.0
+faiss-cpu==1.8.0.post1
+sentence-transformers==3.1.1
+langchain==0.3.10
+langchain-community==0.3.10
+langgraph==0.2.60
+tiktoken==0.8.0
+openai==1.51.2
+python-ulid==2.7.0
