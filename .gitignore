@@ -240,3 +240,6 @@ config/credentials.py
 .env.*.production
 .env.*.staging
 .env.*.development
+
+# Streamlit secrets
+.streamlit
