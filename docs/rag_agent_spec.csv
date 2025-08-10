@@ -1,0 +1,17 @@
+section,key,value
+overview,goal,"Chat Node · Subject Info Node · RAG Review Node를 LangGraph로 연결하고 LLM이 유동적으로 라우팅"
+overview,entry_point,chat
+chat_node,input,"user text"
+chat_node,output,"LLM 일반 대화 응답"
+subject_info_node,input,"대상(제품/작품 등) 정보 문의"
+subject_info_node,db,"st_app/db/subject_information/subjects.json"
+subject_info_node,output,"요약/스펙 문자열"
+rag_review_node,input,"리뷰 관련 문의(요약/참조/추출)"
+rag_review_node,retriever,"st_app/rag/retriever.py (FAISS)"
+rag_review_node,prompt,"st_app/rag/prompt.py"
+rag_review_node,output,"컨텍스트 기반 답변"
+router,decision,"LLM 분류 결과: chat|subject_info|rag_review"
+router,policy,"규칙 기반 금지, 실패 시 키워드 폴백 허용"
+security,keys,"Streamlit Cloud secrets 또는 ENV에 저장(README 안내)"
+deliverable,cloud,"Streamlit Cloud 링크와 동작 스크린샷 README 첨부"
+

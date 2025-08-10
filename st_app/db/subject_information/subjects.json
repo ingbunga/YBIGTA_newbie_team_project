@@ -1,0 +1,17 @@
+[
+  {
+    "id": "parasite",
+    "name": "기생충",
+    "type": "movie",
+    "spec": {
+      "director": "봉준호",
+      "year": "2019",
+      "genre": "드라마/스릴러",
+      "runtime": "132분",
+      "rating": "15세 이상"
+    },
+    "summary": "계급 갈등을 다룬 봉준호 감독의 작품. 아카데미상 작품상 수상작"
+  }
+]
+
+
