@@ -4,13 +4,13 @@ import os
 from typing import List
 
 from langchain_upstage import UpstageEmbeddings
+from pydantic import SecretStr
 
 
 _MODEL_CACHE: dict[str, UpstageEmbeddings] = {}
-
+api_key = SecretStr(os.getenv("UPSTAGE_API_KEY", ''))
 
 def get_embedder(model_name: str = "solar-embedding-1-large") -> UpstageEmbeddings:
-    api_key = os.getenv("UPSTAGE_API_KEY")
     if not api_key:
         raise RuntimeError("UPSTAGE_API_KEY 환경변수가 필요합니다.")
     if model_name not in _MODEL_CACHE:

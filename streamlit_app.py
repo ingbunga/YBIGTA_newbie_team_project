@@ -21,14 +21,17 @@ def main() -> None:
     st.session_state.setdefault("messages", [])
 
     # 간단한 데모용 입력 UI. 실제 그래프 실행은 st_app/graph/router.py에 위임합니다.
-    from st_app.graph.router import get_or_create_graph
+    from st_app.graph.graph_builder import get_or_create_graph
 
     graph = get_or_create_graph()
 
     user_input = st.chat_input("메시지를 입력하세요… 예: 리뷰 내용 알려줘, 영화 정보 알려줘")
     if user_input:
         st.session_state["messages"].append({"role": "user", "content": user_input})
-        for event in graph.stream({"input": user_input}, stream_mode="values"):
+        for event in graph.stream(
+            {"input": user_input, "history": st.session_state["messages"]}, 
+            stream_mode="values"
+        ):
             last = event.get("output")
             if last:
                 st.session_state["messages"].append({"role": "assistant", "content": last})
