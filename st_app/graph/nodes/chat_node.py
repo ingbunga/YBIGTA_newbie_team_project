@@ -1,53 +1,81 @@
 from __future__ import annotations
 
 from typing import Dict
-from langchain.tools import tool
+
 from ...rag.llm import get_llm
-from langchain_core.messages import AIMessage
+from ...rag.prompt import build_chat_prompt
 
 
-SYSTEM_PROMPT = """당신은 영화 리뷰 분석 전문 AI 어시스턴트입니다.
-사용자의 질문을 분석하여 적절한 도구를 사용하세요:
-- 리뷰 검색이나 분석이 필요한 경우: **반드시** route_to_rag_review_node 도구를 사용해서 rag_review_node이 대신 답하게 하세요.
-- 영화 정보나 기본 데이터가 필요한 경우: **반드시** route_to_subject_info_node 도구를 사용해서 subject_info_node이 대신 답하게 하세요.
-- 일반적인 대화나 인사: 직접 응답 하세요.
+SYSTEM_DECIDER = (
+    "당신은 라우팅 분류기입니다. 사용자의 입력을 분석하여 어떤 노드로 라우팅할지 결정하세요:\n\n"
+    "- chat: 일반적인 대화, 인사, 잡담 등 특별한 정보가 필요하지 않은 경우\n"
+    "- subject_info: 영화나 제품의 기본 정보, 스펙, 감독, 배우 등에 대한 문의\n"
+    "- rag_review: 리뷰 내용, 평점, 관객 반응, 리뷰 요약/분석에 대한 문의\n\n"
+    "반드시 다음 중 하나만 출력하세요: chat, subject_info, rag_review\n"
+    "다른 텍스트나 설명은 포함하지 마세요."
+)
 
-항상 친절하고 도움이 되는 답변을 제공하세요."""
-DEFAULT_ROUTING = 'chat'
+
+def _decide_route(user_text: str) -> str:
+    """LLM을 사용한 지능형 라우팅 결정"""
+    try:
+        llm = get_llm(temperature=0.0)
+        msgs = [
+            {"role": "system", "content": SYSTEM_DECIDER},
+            {"role": "user", "content": f"사용자 입력: {user_text}"},
+        ]
+        print("라우팅 LLM 호출 중...")
+        response = llm.invoke(msgs).content.strip().lower()
+        print(f"LLM 라우팅 응답: '{response}'")
+
+        # 유효한 라우트인지 확인
+        if response in {"chat", "subject_info", "rag_review"}:
+            print(f"유효한 라우트 반환: {response}")
+            return response
+        else:
+            print(f"유효하지 않은 라우트: '{response}', 기본값 사용")
+
+    except Exception as e:
+        print(f"라우팅 결정 중 오류: {e}")
+
+    # 폴백: 기본값 반환
+    print("키워드 기반 라우팅으로 폴백")
+    print("기본값 'chat' 반환")
+    return "chat"
 
 
 def chat_node(state: Dict) -> Dict:
-    route = DEFAULT_ROUTING
+    user_input = state["input"]
+    print(f"사용자 입력: '{user_input}'")
+    # 라우팅 결정
+    route = _decide_route(user_input)
 
-    @tool(parse_docstring=True)
-    def route_to_rag_review_node() -> None:
-        '''rag review 노드에게 대신 요청을 넘깁니다.'''
-        nonlocal route
-        route = "rag_review"
+    # 다른 노드로 라우팅
+    if route == "subject_info":
+        print("Subject Info Node로 라우팅")
+        state["next_node"] = "subject_info"
+        return state
+    elif route == "rag_review":
+        print("RAG Review Node로 라우팅")
+        state["next_node"] = "rag_review"
+        return state
 
-    @tool(parse_docstring=True)
-    def route_to_subject_info_node() -> None:
-        '''subject info 노드에게 대신 요청을 넘깁니다.'''
-        nonlocal route
-        route = "subject_info"
-
-    tools = [route_to_rag_review_node, route_to_subject_info_node]
+    # 일반 채팅 처리
+    print("일반 채팅으로 처리")
+    print("=== CHAT_NODE DEBUG ===")
     llm = get_llm()
-    llm_with_tools = llm.bind_tools(tools)
 
-    history: list = state.get("history", [])
-    messages = history[:-1] + [{"role": "system", "content": SYSTEM_PROMPT}] + history[-1:]
-    resp: AIMessage = llm_with_tools.invoke(messages)   # type: ignore
+    # 채팅 프롬프트 생성
+    prompt = build_chat_prompt(user_input, state)
 
-    # 도구 호출이 있다면 실행
-    toolname_func_map = {t.name: t for t in tools}
-    for tool_call in resp.tool_calls:
-        tool_func = toolname_func_map.get(tool_call.get("name"))
-        if tool_func:
-            tool_func.invoke({})
+    print("=== CHAT 프롬프트 ===")
+    print(prompt)
+    print("=== CHAT 프롬프트 끝 ===")
 
-    if route == DEFAULT_ROUTING:
-        return {"output": resp.content, "history": history, "next_node": route}
-    else:
-        print(f"라우팅 결정: {route}")
-        return {"next_node": route, "history": history}
+    print("LLM 호출 중...")
+    resp = llm.invoke([{"role": "user", "content": prompt}])
+    output = resp.content
+    print(f"LLM 응답: {output}")
+    print("=== CHAT DEBUG END ===\n")
+
+    return {"output": output}

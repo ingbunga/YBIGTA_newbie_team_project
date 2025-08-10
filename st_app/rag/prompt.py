@@ -34,3 +34,30 @@ def build_subject_info_prompt(query: str, items: list[dict]) -> str:
         f"[주제목록]\n{catalog}\n"
     )
 
+
+def build_chat_prompt(user_input: str, state: dict) -> str:
+    """기본 채팅 노드용 프롬프트를 구성합니다."""
+
+    # state에서 대화 히스토리 추출
+    history_text = ""
+    if state and "history" in state:
+        history = state["history"][-10:]  # 최근 10개 메시지만 (5턴)
+        if history:
+            history_items = []
+            for msg in history:
+                role = "사용자" if msg["role"] == "user" else "AI"
+                history_items.append(f"{role}: {msg['content']}")
+            history_text = f"\n[대화 히스토리]\n" + "\n".join(history_items) + "\n"
+
+    return f"""
+당신은 도움이 되는 AI 어시스턴트입니다. 사용자와 자연스럽고 친근한 대화를 나누며 질문에 답변해주세요.
+{history_text}
+사용자 질문: {user_input}
+
+답변 가이드라인:
+1. 친근하고 자연스러운 톤으로 답변
+2. 대화 히스토리를 참고하여 맥락을 이해
+3. 도움이 되는 정보를 제공
+4. 마크다운 포맷 사용 가능
+5. 한국어로 답변
+"""
