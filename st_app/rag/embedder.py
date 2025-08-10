@@ -5,10 +5,11 @@ from typing import List
 
 from langchain_upstage import UpstageEmbeddings
 from pydantic import SecretStr
+import streamlit as st
 
 
 _MODEL_CACHE: dict[str, UpstageEmbeddings] = {}
-api_key = SecretStr(os.getenv("UPSTAGE_API_KEY", ''))
+api_key = SecretStr(st.secrets.get("UPSTAGE_API_KEY", os.getenv("UPSTAGE_API_KEY", "")))
 
 def get_embedder(model_name: str = "solar-embedding-1-large") -> UpstageEmbeddings:
     if not api_key:
