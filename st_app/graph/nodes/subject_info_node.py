@@ -47,12 +47,11 @@ def subject_info_node(state: Dict) -> Dict:
     # 매칭이 없으면 LLM에 주제 목록과 함께 질의를 전달해 선택·응답하도록 위임
     llm = get_llm()
     prompt = build_subject_info_prompt(state["input"], db)
-    msgs = [
-        {"role": "system", "content": SYSTEM_SUBJECT},
-        {"role": "user", "content": prompt},
-    ]
+
+    history: list = state.get("history", [])
+    msgs = [{"role": "system", "content": SYSTEM_SUBJECT}] + history
     resp = llm.invoke(msgs)
     print("=== SUBJECT LLM RESP ===")
     print(resp.content)
     print("=== SUBJECT DEBUG END ===\n")
-    return {"output": resp.content}
+    return {"output": resp.content, "history": history}

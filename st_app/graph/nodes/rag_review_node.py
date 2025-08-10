@@ -33,17 +33,15 @@ def rag_review_node(state: Dict) -> Dict:
     print(f"시스템 메시지: {SYSTEM_RAG}")
     print(f"사용자 프롬프트: {prompt}")
     print("=== RAG 프롬프트 끝 ===")
-    
-    msgs = [
-        {"role": "system", "content": SYSTEM_RAG},
-        {"role": "user", "content": prompt},
-    ]
-    
+
+    history: list = state.get("history", [])
+    msgs = [{"role": "system", "content": SYSTEM_RAG}] + history
+
     print("LLM 호출 중...")
     resp = llm.invoke(msgs)
     print(f"LLM 응답: {resp.content}")
     print("=== RAG DEBUG END ===\n")
-    
-    return {"output": resp.content}
+
+    return {"output": resp.content, "history": history}
 
 
