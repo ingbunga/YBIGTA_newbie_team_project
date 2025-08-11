@@ -49,7 +49,10 @@ def subject_info_node(state: Dict) -> Dict:
     prompt = build_subject_info_prompt(state["input"], db)
 
     history: list = state.get("history", [])
-    msgs = [{"role": "system", "content": SYSTEM_SUBJECT}] + history
+    msgs = [{"role": "system", "content": prompt}] + history
+    print("=== SUBJECT 프롬프트 ===")
+    print(msgs)
+    print("=== SUBJECT 프롬프트 끝 ===")
     resp = llm.invoke(msgs)
     print("=== SUBJECT LLM RESP ===")
     print(resp.content)
