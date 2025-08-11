@@ -1,8 +1,5 @@
 section,key,value
 
-dataset,subjects,"st_app/db/subject_information/subjects.json"
-dataset,reviews,"database/reviews_naver.csv (FAISS 인덱스 생성에 사용)"
-
 # 메타
 meta,프로젝트 목표,"RAG · Agent 데모 구축 및 실시간 질의응답"
 meta,담당자,"강성우, 엄준서, 한원석"
