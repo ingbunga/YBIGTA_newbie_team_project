@@ -6,7 +6,7 @@ from pydantic import SecretStr
 from langchain_upstage import ChatUpstage
 import streamlit as st
 
-api_key = SecretStr(st.secrets.get("UPSTAGE_API_KEY", os.getenv("UPSTAGE_API_KEY", "")))
+api_key = SecretStr(os.getenv("UPSTAGE_API_KEY") or st.secrets.get("UPSTAGE_API_KEY", ""))
 
 def get_llm(model: str = "solar-pro-250422", temperature: float = 0.2) -> ChatUpstage:
     if not api_key:
